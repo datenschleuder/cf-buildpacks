@@ -13,6 +13,7 @@ heroku_rev='-2'
 
 # config
 MCRYPT_VERSION="2.5.8"
+CLAMAV_VERSION="0.98.1"
 APACHE_VERSION="2.2.25"
 APACHE_PATH="apache"
 PHP_VERSION="5.3.27"
@@ -39,17 +40,18 @@ if [ -f www/Procfile ]; then
 fi
 
 MCRYPT_URL="https://s3.amazonaws.com/cfbuildpacks/vendor/mcrypt-""$MCRYPT_VERSION""$heroku_rev"".tar.gz"
-#MCRYPT_URL="http://static.dynamic.welt.de/mcrypt-""$MCRYPT_VERSION""$heroku_rev"".tar.gz"
 echo "-----> Bundling mcrypt version $MCRYPT_VERSION"
 curl --max-time 60 --location "$MCRYPT_URL" | tar xz
 
+CLAMAV_URL="https://s3.amazonaws.com/cfbuildpacks/vendor/clamav-""$CLAMAV_VERSION""$heroku_rev"".tar.gz"
+echo "-----> Bundling clamav version $CLAMAV_VERSION"
+curl --max-time 60 --location "$CLAMAV_URL" | tar xz
+
 APACHE_URL="https://s3.amazonaws.com/cfbuildpacks/apache/apache-""$APACHE_VERSION""$heroku_rev"".tar.gz"
-#APACHE_URL="http://static.dynamic.welt.de/apache-""$APACHE_VERSION""$heroku_rev"".tar.gz"
 echo "-----> Bundling Apache version $APACHE_VERSION"
 curl  --max-time 60 --location "$APACHE_URL" | tar xz
 
 PHP_URL="https://s3.amazonaws.com/cfbuildpacks/php/php-$PHP_VERSION""$heroku_rev"".tar.gz"
-#PHP_URL="http://static.dynamic.welt.de/php-$PHP_VERSION""$heroku_rev"".tar.gz"
 echo "-----> Bundling PHP version $PHP_VERSION"
 curl --max-time 60 --location "$PHP_URL" | tar xz
 
