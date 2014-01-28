@@ -43,9 +43,9 @@ MCRYPT_URL="https://s3.amazonaws.com/cfbuildpacks/vendor/mcrypt-""$MCRYPT_VERSIO
 echo "-----> Bundling mcrypt version $MCRYPT_VERSION"
 curl --max-time 60 --location "$MCRYPT_URL" | tar xz
 
-#CLAMAV_URL="https://s3.amazonaws.com/cfbuildpacks/vendor/clamav-""$CLAMAV_VERSION""$heroku_rev"".tar.gz"
-#echo "-----> Bundling clamav version $CLAMAV_VERSION"
-#curl --max-time 60 --location "$CLAMAV_URL" | tar xz
+CLAMAV_URL="https://s3.amazonaws.com/cfbuildpacks/vendor/clamav-""$CLAMAV_VERSION""$heroku_rev"".tar.gz"
+echo "-----> Bundling clamav version $CLAMAV_VERSION"
+curl --max-time 60 --location "$CLAMAV_URL" | tar xz
 
 APACHE_URL="https://s3.amazonaws.com/cfbuildpacks/apache/apache-""$APACHE_VERSION""$heroku_rev"".tar.gz"
 echo "-----> Bundling Apache version $APACHE_VERSION"
